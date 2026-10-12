@@ -1,0 +1,4979 @@
+<!doctype html>
+
+<html lang="id">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>
+ETS Alat Industri Kimia — RPL
+</title>
+
+
+<style>
+
+:root{
+
+  --navy:#153452;
+
+  --blue:#2f6fa5;
+
+  --gold:#b28734;
+
+  --ink:#23364b;
+
+  --muted:#69798b;
+
+  --line:#d8e0e7;
+
+  --paper:#fbfaf7;
+
+  --bad:#a2443f;
+
+  --ok:#24734f;
+
+  --answered:#e7f2eb;
+
+}
+
+
+*{
+
+  box-sizing:border-box;
+
+}
+
+
+html,
+body{
+
+  margin:0;
+
+  min-height:100%;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:var(--ink);
+
+  background:
+
+    linear-gradient(
+
+      180deg,
+
+      #f5f1e8,
+
+      #fafafa 220px,
+
+      #f6f7f8
+
+    );
+
+}
+
+
+body.exam{
+
+  user-select:none;
+
+}
+
+
+.wrap{
+
+  max-width:980px;
+
+  margin:auto;
+
+  padding:28px 18px 48px;
+
+}
+
+
+.card{
+
+  position:relative;
+
+  z-index:2;
+
+  background:var(--paper);
+
+  border:1px solid #ded8cb;
+
+  border-radius:22px;
+
+  padding:30px;
+
+  box-shadow:
+
+    0 10px 30px
+
+    rgba(30,48,66,.07);
+
+}
+
+
+.eyebrow{
+
+  font:
+
+    700 13px Georgia,
+
+    serif;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  color:var(--gold);
+
+}
+
+
+h1,
+h2{
+
+  font-family:
+    Georgia,
+    serif;
+
+  color:var(--navy);
+
+}
+
+
+h1{
+
+  font-size:
+
+    clamp(
+
+      34px,
+
+      5vw,
+
+      52px
+
+    );
+
+  line-height:1.08;
+
+  margin:8px 0 14px;
+
+}
+
+
+.sub{
+
+  font-size:18px;
+
+  color:var(--muted);
+
+  line-height:1.55;
+
+}
+
+
+.rule{
+
+  height:2px;
+
+  background:var(--gold);
+
+  margin:22px 0;
+
+}
+
+
+.grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:12px;
+
+}
+
+
+.box{
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:12px;
+
+  padding:15px;
+
+}
+
+
+.box b{
+
+  display:block;
+
+  color:var(--navy);
+
+  margin-bottom:5px;
+
+}
+
+
+.box span,
+.small{
+
+  font-size:14px;
+
+  color:var(--muted);
+
+  line-height:1.45;
+
+}
+
+
+.scope-box{
+
+  margin-top:14px;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:12px;
+
+  padding:15px;
+
+}
+
+
+.scope-box b{
+
+  color:var(--navy);
+
+}
+
+
+.scope-list{
+
+  margin:8px 0 0;
+
+  padding-left:20px;
+
+  color:var(--muted);
+
+  line-height:1.6;
+
+  font-size:14px;
+
+}
+
+
+.form{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:12px;
+
+  margin:20px 0;
+
+}
+
+
+label{
+
+  font-size:13px;
+
+  font-weight:700;
+
+  color:var(--navy);
+
+}
+
+
+input[type=text]{
+
+  width:100%;
+
+  margin-top:7px;
+
+  padding:12px;
+
+  border:1px solid var(--line);
+
+  border-radius:9px;
+
+  font-size:16px;
+
+  background:#fff;
+
+}
+
+
+.check{
+
+  display:flex;
+
+  gap:10px;
+
+  align-items:flex-start;
+
+  margin:18px 0;
+
+  color:var(--muted);
+
+  line-height:1.45;
+
+}
+
+
+.btn{
+
+  border:1px solid var(--line);
+
+  background:#fff;
+
+  color:var(--navy);
+
+  padding:11px 17px;
+
+  border-radius:10px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+  min-height:44px;
+
+}
+
+
+.btn.primary{
+
+  background:var(--navy);
+
+  color:#fff;
+
+  border-color:var(--navy);
+
+}
+
+
+.btn.submit{
+
+  background:var(--gold);
+
+  color:#fff;
+
+  border-color:var(--gold);
+
+}
+
+
+.btn:disabled{
+
+  opacity:.4;
+
+  cursor:not-allowed;
+
+}
+
+
+.hidden{
+
+  display:none !important;
+
+}
+
+
+.top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+}
+
+
+.timer{
+
+  font:
+
+    700 30px Georgia,
+
+    serif;
+
+  color:var(--navy);
+
+}
+
+
+.status{
+
+  font-size:14px;
+
+  color:var(--muted);
+
+}
+
+
+.progress{
+
+  height:8px;
+
+  background:#edf1f4;
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+  margin:14px 0 18px;
+
+}
+
+
+.progress div{
+
+  height:100%;
+
+  background:var(--blue);
+
+  width:0;
+
+  transition:.2s;
+
+}
+
+
+
+/* ===================================================
+   NAVIGATOR
+=================================================== */
+
+.navigator-wrap{
+
+  margin:18px 0 24px;
+
+  padding:15px;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:14px;
+
+}
+
+
+.navigator-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:12px;
+
+}
+
+
+.navigator-title{
+
+  font-size:13px;
+
+  font-weight:700;
+
+  color:var(--navy);
+
+  text-transform:uppercase;
+
+  letter-spacing:.06em;
+
+}
+
+
+.answer-status{
+
+  font-size:13px;
+
+  color:var(--muted);
+
+}
+
+
+.question-nav{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(10,1fr);
+
+  gap:8px;
+
+}
+
+
+.qnav{
+
+  height:38px;
+
+  border-radius:8px;
+
+  border:1px solid var(--line);
+
+  background:#fff;
+
+  color:var(--navy);
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.15s;
+
+}
+
+
+.qnav:hover{
+
+  border-color:var(--blue);
+
+}
+
+
+.qnav.answered{
+
+  background:var(--answered);
+
+  border-color:#9bc2a9;
+
+  color:var(--ok);
+
+}
+
+
+.qnav.current{
+
+  background:var(--navy);
+
+  border-color:var(--navy);
+
+  color:#fff;
+
+}
+
+
+.legend{
+
+  display:flex;
+
+  gap:14px;
+
+  flex-wrap:wrap;
+
+  margin-top:11px;
+
+  font-size:12px;
+
+  color:var(--muted);
+
+}
+
+
+.legend-item{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+}
+
+
+.dot{
+
+  width:12px;
+
+  height:12px;
+
+  border-radius:3px;
+
+  border:1px solid var(--line);
+
+  background:#fff;
+
+}
+
+
+.dot.done{
+
+  background:var(--answered);
+
+  border-color:#9bc2a9;
+
+}
+
+
+.dot.now{
+
+  background:var(--navy);
+
+  border-color:var(--navy);
+
+}
+
+
+
+/* ===================================================
+   QUESTION
+=================================================== */
+
+.qmeta{
+
+  font-size:13px;
+
+  font-weight:700;
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+
+  color:var(--muted);
+
+}
+
+
+.q{
+
+  font:
+
+    24px/1.45 Georgia,
+
+    serif;
+
+  color:var(--navy);
+
+  margin:8px 0 18px;
+
+}
+
+
+.opts{
+
+  display:grid;
+
+  gap:10px;
+
+}
+
+
+.opt{
+
+  display:flex;
+
+  gap:12px;
+
+  width:100%;
+
+  text-align:left;
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  padding:14px 15px;
+
+  border-radius:11px;
+
+  cursor:pointer;
+
+  font-size:16px;
+
+  color:var(--ink);
+
+}
+
+
+.opt:hover{
+
+  border-color:#9fb4c6;
+
+  background:#fafcfd;
+
+}
+
+
+.opt.sel{
+
+  border-color:var(--navy);
+
+  background:#edf3f8;
+
+}
+
+
+.letter{
+
+  font-weight:700;
+
+  color:var(--navy);
+
+  min-width:22px;
+
+}
+
+
+textarea{
+
+  width:100%;
+
+  min-height:260px;
+
+  resize:vertical;
+
+  border:1px solid var(--line);
+
+  border-radius:12px;
+
+  padding:14px;
+
+  outline:none;
+
+  font:
+
+    16px/1.55 Arial,
+
+    Helvetica,
+
+    sans-serif;
+
+  color:var(--ink);
+
+  background:#fff;
+
+}
+
+
+.wordcount{
+
+  text-align:right;
+
+  font-size:13px;
+
+  color:var(--muted);
+
+  margin-top:7px;
+
+}
+
+
+.actions{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-top:22px;
+
+}
+
+
+.actions-right{
+
+  display:flex;
+
+  gap:10px;
+
+}
+
+
+
+/* ===================================================
+   OVERLAY
+=================================================== */
+
+.overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(10,24,38,.78);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  z-index:90;
+
+}
+
+
+.warn{
+
+  max-width:540px;
+
+  background:#fff;
+
+  border-radius:18px;
+
+  padding:28px;
+
+  text-align:center;
+
+}
+
+
+
+/* ===================================================
+   RESULT
+=================================================== */
+
+.result{
+
+  text-align:center;
+
+}
+
+
+.checkmark{
+
+  width:72px;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  margin:10px auto 20px;
+
+  border-radius:50%;
+
+  background:#eaf4ee;
+
+  color:var(--ok);
+
+  font-size:38px;
+
+  font-weight:bold;
+
+}
+
+
+.badge{
+
+  display:inline-block;
+
+  background:#eef3f8;
+
+  color:var(--navy);
+
+  border-radius:999px;
+
+  padding:7px 10px;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  margin-top:8px;
+
+}
+
+
+.error{
+
+  color:var(--bad);
+
+  font-weight:700;
+
+  line-height:1.5;
+
+}
+
+
+.success{
+
+  color:var(--ok);
+
+  font-weight:700;
+
+}
+
+
+.loading{
+
+  opacity:.65;
+
+  pointer-events:none;
+
+}
+
+
+
+/* ===================================================
+   WATERMARK
+=================================================== */
+
+.watermark-layer{
+
+  position:fixed;
+
+  inset:-12vh -12vw;
+
+  z-index:20;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  grid-auto-rows:150px;
+
+  transform:
+    rotate(-20deg)
+    scale(1.08);
+
+  transform-origin:center;
+
+}
+
+
+.watermark-item{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  padding:16px;
+
+  font:
+
+    700 13px/1.35 Arial,
+
+    Helvetica,
+
+    sans-serif;
+
+  letter-spacing:.04em;
+
+  color:
+    rgba(21,52,82,.11);
+
+  white-space:pre-line;
+
+}
+
+
+
+/* ===================================================
+   PRIVACY SHIELD
+=================================================== */
+
+body.privacy #qtext,
+body.privacy #mcqArea,
+body.privacy #essayArea{
+
+  filter:blur(22px);
+
+  opacity:.05;
+
+}
+
+
+.privacy-shield{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:70;
+
+  background:#10283e;
+
+  color:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  padding:28px;
+
+}
+
+
+.privacy-shield .inner{
+
+  max-width:560px;
+
+}
+
+
+.privacy-shield h2{
+
+  color:#fff;
+
+  margin-bottom:8px;
+
+}
+
+
+.privacy-shield p{
+
+  color:#dbe5ee;
+
+  line-height:1.55;
+
+}
+
+
+
+/* ===================================================
+   PRINT BLOCK
+=================================================== */
+
+@media print{
+
+  body *{
+
+    display:none !important;
+
+  }
+
+
+  body::before{
+
+    content:
+      "Pencetakan soal dinonaktifkan.";
+
+    display:block !important;
+
+    padding:40px;
+
+    font:
+
+      700 24px Arial,
+
+      sans-serif;
+
+    color:#000;
+
+  }
+
+}
+
+
+
+/* ===================================================
+   MOBILE
+=================================================== */
+
+@media(max-width:700px){
+
+  .grid,
+  .form{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .card{
+
+    padding:22px;
+
+  }
+
+
+  .q{
+
+    font-size:21px;
+
+  }
+
+
+  .question-nav{
+
+    grid-template-columns:
+      repeat(5,1fr);
+
+  }
+
+
+  .actions{
+
+    flex-direction:column;
+
+  }
+
+
+  .actions-right{
+
+    width:100%;
+
+  }
+
+
+  .actions-right .btn{
+
+    flex:1;
+
+  }
+
+
+  .watermark-layer{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="wrap">
+
+
+<!-- ===================================================
+     START
+=================================================== -->
+
+<section
+  class="card"
+  id="start"
+>
+
+
+<div class="eyebrow">
+
+EVALUASI TENGAH SEMESTER • RPL
+
+</div>
+
+
+<h1>
+
+Alat Industri Kimia
+
+</h1>
+
+
+<p class="sub">
+
+Materi Week 1–7
+
+</p>
+
+
+<div class="rule"></div>
+
+
+
+<div class="grid">
+
+
+<div class="box">
+
+<b>
+16 Pilihan Ganda
+</b>
+
+<span>
+Seluruh soal tersedia dalam satu sesi.
+</span>
+
+</div>
+
+
+<div class="box">
+
+<b>
+4 Uraian
+</b>
+
+<span>
+Jawaban dapat dibuka dan diperbaiki kembali.
+</span>
+
+</div>
+
+
+<div class="box">
+
+<b>
+45 Menit
+</b>
+
+<span>
+Urutan soal dan pilihan jawaban diacak.
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<div class="scope-box">
+
+<b>
+Cakupan ETS RPL
+</b>
+
+<ul class="scope-list">
+
+<li>
+Week 1–2 • Size Reduction
+</li>
+
+<li>
+Week 3 • Solid Separation
+</li>
+
+<li>
+Week 4–5 • Solid Handling
+</li>
+
+<li>
+Week 6–7 • Evaporator
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="form">
+
+
+<label>
+
+Nama Mahasiswa
+
+<input
+  id="name"
+  type="text"
+  autocomplete="off"
+  placeholder="Nama lengkap"
+>
+
+</label>
+
+
+
+<label>
+
+NPM
+
+<input
+  id="npm"
+  type="text"
+  autocomplete="off"
+  placeholder="NPM"
+>
+
+</label>
+
+
+</div>
+
+
+
+<label class="check">
+
+
+<input
+  id="agree"
+  type="checkbox"
+>
+
+
+<span>
+
+Saya memahami bahwa waktu ujian adalah 45 menit,
+urutan soal diacak,
+jawaban dapat ditinjau kembali melalui navigasi soal,
+identitas saya ditampilkan sebagai watermark,
+perpindahan tab akan tercatat,
+dan ujian akan disubmit otomatis setelah
+3 kali perpindahan tab.
+
+</span>
+
+
+</label>
+
+
+
+<button
+  id="startBtn"
+  class="btn primary"
+  disabled
+>
+
+Mulai ETS
+
+</button>
+
+
+<p
+  id="startError"
+  class="error"
+></p>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     EXAM
+=================================================== -->
+
+<section
+  class="card hidden"
+  id="exam"
+>
+
+
+<div class="top">
+
+
+<div>
+
+
+<div class="eyebrow">
+
+ETS • RPL
+
+</div>
+
+
+<div
+  id="student"
+  class="status"
+></div>
+
+
+</div>
+
+
+
+<div style="text-align:right">
+
+
+<div
+  id="timer"
+  class="timer"
+>
+
+45:00
+
+</div>
+
+
+<div class="status">
+
+Perpindahan tab:
+
+<b id="viol">
+0
+</b>
+
+/3
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="progress">
+
+<div id="bar"></div>
+
+</div>
+
+
+
+<!-- ===================================================
+     NAVIGATOR
+=================================================== -->
+
+<div class="navigator-wrap">
+
+
+<div class="navigator-top">
+
+
+<div class="navigator-title">
+
+Navigasi Soal
+
+</div>
+
+
+<div
+  id="answerStatus"
+  class="answer-status"
+>
+
+Terjawab 0 dari 20
+
+</div>
+
+
+</div>
+
+
+
+<div
+  id="questionNav"
+  class="question-nav"
+></div>
+
+
+
+<div class="legend">
+
+
+<div class="legend-item">
+
+<span class="dot now"></span>
+
+Soal aktif
+
+</div>
+
+
+<div class="legend-item">
+
+<span class="dot done"></span>
+
+Sudah dijawab
+
+</div>
+
+
+<div class="legend-item">
+
+<span class="dot"></span>
+
+Belum dijawab
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div
+  id="qmeta"
+  class="qmeta"
+></div>
+
+
+<div
+  id="qtext"
+  class="q"
+></div>
+
+
+
+<!-- ===================================================
+     MCQ
+=================================================== -->
+
+<div id="mcqArea">
+
+<div
+  id="opts"
+  class="opts"
+></div>
+
+</div>
+
+
+
+<!-- ===================================================
+     ESSAY
+=================================================== -->
+
+<div
+  id="essayArea"
+  class="hidden"
+>
+
+
+<textarea
+  id="essayInput"
+  placeholder="Tuliskan jawaban Anda secara jelas dan lengkap..."
+></textarea>
+
+
+<div class="wordcount">
+
+<span id="wordCount">
+0
+</span>
+
+kata
+
+</div>
+
+
+</div>
+
+
+
+<p
+  id="examError"
+  class="error"
+></p>
+
+
+
+<div class="actions">
+
+
+<button
+  id="prevBtn"
+  class="btn"
+>
+
+← Sebelumnya
+
+</button>
+
+
+
+<div class="actions-right">
+
+
+<button
+  id="nextBtn"
+  class="btn primary"
+>
+
+Berikutnya →
+
+</button>
+
+
+<button
+  id="submitBtn"
+  class="btn submit"
+>
+
+Submit Ujian
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ===================================================
+     RESULT
+=================================================== -->
+
+<section
+  class="card hidden result"
+  id="result"
+>
+
+
+<div class="checkmark">
+
+✓
+
+</div>
+
+
+<div class="eyebrow">
+
+SUBMISSION RECEIVED
+
+</div>
+
+
+<h2>
+
+Jawaban Berhasil Dikirim
+
+</h2>
+
+
+<p class="success">
+
+Jawaban Anda telah tersimpan.
+
+</p>
+
+
+<div
+  id="submissionId"
+  class="badge"
+></div>
+
+
+<p class="small">
+
+Pastikan halaman ini sudah muncul sebelum menutup browser.
+
+</p>
+
+
+</section>
+
+
+</div>
+
+
+
+<!-- ===================================================
+     WATERMARK
+=================================================== -->
+
+<div
+  id="watermarkLayer"
+  class="watermark-layer hidden"
+></div>
+
+
+
+<!-- ===================================================
+     PRIVACY SHIELD
+=================================================== -->
+
+<div
+  id="privacyShield"
+  class="privacy-shield hidden"
+>
+
+
+<div class="inner">
+
+
+<h2>
+
+Konten Ujian Disembunyikan
+
+</h2>
+
+
+<p>
+
+Halaman ujian kehilangan fokus.
+Silakan kembali ke jendela ujian untuk melanjutkan.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===================================================
+     TAB WARNING
+=================================================== -->
+
+<div
+  id="overlay"
+  class="overlay hidden"
+>
+
+
+<div class="warn">
+
+
+<h2>
+
+Perpindahan Tab Terdeteksi
+
+</h2>
+
+
+<p id="warnText"></p>
+
+
+<button
+  id="backBtn"
+  class="btn primary"
+>
+
+Kembali ke Ujian
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* ===================================================
+   SUPABASE CONFIG
+=================================================== */
+
+const SUPABASE_URL =
+
+  "https://ofnfcojkwlojvjiuaivh.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+
+  "sb_publishable_176X2v4_F8xN1bL-ATPjdg_joLsgsRi";
+
+
+
+/* ===================================================
+   CONFIG UJIAN
+=================================================== */
+
+const CFG = {
+
+  minutes:45,
+
+  maxViol:3,
+
+  watermarkCount:20
+
+};
+
+
+
+const $ =
+
+  id =>
+
+  document.getElementById(id);
+
+
+
+let attemptId = null;
+
+
+let studentName = "";
+
+
+let studentNpm = "";
+
+
+let items = [];
+
+
+let idx = 0;
+
+
+let pgAnswers = {};
+
+
+let essayAnswers = {};
+
+
+let violations = 0;
+
+
+let secondsLeft =
+
+  CFG.minutes * 60;
+
+
+let timerInterval = null;
+
+
+let started = false;
+
+
+let submitted = false;
+
+
+let pendingWarning = false;
+
+
+let screenshotShieldTimer = null;
+
+
+
+/* ===================================================
+   SEEDED RANDOM
+=================================================== */
+
+function hash32(str){
+
+
+  let h =
+
+    2166136261 >>> 0;
+
+
+  for(
+
+    let i = 0;
+
+    i < str.length;
+
+    i++
+
+  ){
+
+
+    h ^=
+
+      str.charCodeAt(i);
+
+
+    h =
+
+      Math.imul(
+
+        h,
+
+        16777619
+
+      );
+
+
+  }
+
+
+  return h >>> 0;
+
+}
+
+
+
+function mulberry32(seed){
+
+
+  return function(){
+
+
+    let t =
+
+      seed +=
+
+      0x6D2B79F5;
+
+
+    t =
+
+      Math.imul(
+
+        t ^
+
+        (
+
+          t >>> 15
+
+        ),
+
+        t | 1
+
+      );
+
+
+    t ^=
+
+      t +
+
+      Math.imul(
+
+        t ^
+
+        (
+
+          t >>> 7
+
+        ),
+
+        t | 61
+
+      );
+
+
+    return (
+
+      (
+
+        t ^
+
+        (
+
+          t >>> 14
+
+        )
+
+      ) >>> 0
+
+    )
+
+    /
+
+    4294967296;
+
+
+  };
+
+}
+
+
+
+function seededShuffle(
+
+  array,
+
+  seedText
+
+){
+
+
+  const a =
+
+    [...array];
+
+
+  const rnd =
+
+    mulberry32(
+
+      hash32(seedText)
+
+    );
+
+
+  for(
+
+    let i =
+
+      a.length - 1;
+
+    i > 0;
+
+    i--
+
+  ){
+
+
+    const j =
+
+      Math.floor(
+
+        rnd()
+
+        *
+
+        (
+
+          i + 1
+
+        )
+
+      );
+
+
+    [
+
+      a[i],
+
+      a[j]
+
+    ]
+
+    =
+
+    [
+
+      a[j],
+
+      a[i]
+
+    ];
+
+
+  }
+
+
+  return a;
+
+}
+
+
+
+/* ===================================================
+   CONFIG CHECK
+=================================================== */
+
+function readyConfig(){
+
+
+  return (
+
+    SUPABASE_URL
+      .startsWith(
+        "https://"
+      )
+
+    &&
+
+    SUPABASE_PUBLISHABLE_KEY
+      .length > 20
+
+  );
+
+}
+
+
+
+/* ===================================================
+   SUPABASE RPC
+=================================================== */
+
+async function rpc(
+
+  functionName,
+
+  body
+
+){
+
+
+  const response =
+
+    await fetch(
+
+      `${SUPABASE_URL}/rest/v1/rpc/${functionName}`,
+
+      {
+
+
+        method:"POST",
+
+
+        headers:{
+
+
+          "Content-Type":
+            "application/json",
+
+
+          "apikey":
+            SUPABASE_PUBLISHABLE_KEY,
+
+
+          "Authorization":
+            `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+
+
+        },
+
+
+        body:
+          JSON.stringify(body)
+
+
+      }
+
+    );
+
+
+
+  let data = null;
+
+
+
+  try{
+
+
+    data =
+
+      await response.json();
+
+
+  }
+
+
+  catch(error){
+
+
+    data = null;
+
+
+  }
+
+
+
+  if(
+
+    !response.ok
+
+  ){
+
+
+    throw new Error(
+
+
+      data?.message
+
+      ||
+
+      data?.error
+
+      ||
+
+      `HTTP ${response.status}`
+
+
+    );
+
+
+  }
+
+
+
+  return data;
+
+}
+
+
+
+/* ===================================================
+   VALIDASI FORM
+=================================================== */
+
+function validateStart(){
+
+
+  const name =
+
+    $("name")
+      .value
+      .trim();
+
+
+
+  const npm =
+
+    $("npm")
+      .value
+      .trim();
+
+
+
+  $("startBtn").disabled =
+
+    !(
+
+
+      name.length >= 2
+
+
+      &&
+
+
+      npm.length >= 3
+
+
+      &&
+
+
+      $("agree").checked
+
+
+    );
+
+}
+
+
+
+$("name")
+  .addEventListener(
+
+    "input",
+
+    validateStart
+
+  );
+
+
+
+$("npm")
+  .addEventListener(
+
+    "input",
+
+    validateStart
+
+  );
+
+
+
+$("agree")
+  .addEventListener(
+
+    "change",
+
+    validateStart
+
+  );
+
+
+
+/* ===================================================
+   WATERMARK
+=================================================== */
+
+function buildWatermark(){
+
+
+  const layer =
+
+    $("watermarkLayer");
+
+
+  layer.innerHTML = "";
+
+
+  for(
+
+    let i = 0;
+
+    i < CFG.watermarkCount;
+
+    i++
+
+  ){
+
+
+    const item =
+
+      document
+        .createElement(
+          "div"
+        );
+
+
+    item.className =
+
+      "watermark-item";
+
+
+    layer
+      .appendChild(
+        item
+      );
+
+
+  }
+
+
+  updateWatermark();
+
+
+  layer
+    .classList
+    .remove(
+      "hidden"
+    );
+
+}
+
+
+
+function updateWatermark(){
+
+
+  if(
+
+    !attemptId
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+
+  const now =
+
+    new Date();
+
+
+
+  const clock =
+
+    now
+      .toLocaleString(
+
+        "id-ID",
+
+        {
+
+          hour12:false
+
+        }
+
+      );
+
+
+
+  const shortId =
+
+    String(attemptId)
+      .slice(
+        0,
+        8
+      );
+
+
+
+  const text =
+
+    `${studentName}\n${studentNpm} • ${shortId}\n${clock}`;
+
+
+
+  document
+    .querySelectorAll(
+
+      ".watermark-item"
+
+    )
+    .forEach(
+
+      element =>{
+
+
+        element.textContent =
+
+          text;
+
+
+      }
+
+    );
+
+}
+
+
+
+function hideWatermark(){
+
+
+  $("watermarkLayer")
+    .classList
+    .add(
+      "hidden"
+    );
+
+}
+
+
+
+/* ===================================================
+   PRIVACY SHIELD
+=================================================== */
+
+function showPrivacyShield(){
+
+
+  if(
+
+    !started
+
+    ||
+
+    submitted
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+
+  document
+    .body
+    .classList
+    .add(
+      "privacy"
+    );
+
+
+  $("privacyShield")
+    .classList
+    .remove(
+      "hidden"
+    );
+
+}
+
+
+
+function hidePrivacyShield(){
+
+
+  document
+    .body
+    .classList
+    .remove(
+      "privacy"
+    );
+
+
+  $("privacyShield")
+    .classList
+    .add(
+      "hidden"
+    );
+
+}
+
+
+
+function temporaryScreenshotShield(){
+
+
+  if(
+
+    !started
+
+    ||
+
+    submitted
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+  showPrivacyShield();
+
+
+  clearTimeout(
+
+    screenshotShieldTimer
+
+  );
+
+
+  screenshotShieldTimer =
+
+    setTimeout(
+
+      ()=>{
+
+
+        if(
+
+          started
+
+          &&
+
+          !submitted
+
+          &&
+
+          document.visibilityState ===
+          "visible"
+
+          &&
+
+          document.hasFocus()
+
+        ){
+
+
+          hidePrivacyShield();
+
+
+        }
+
+
+      },
+
+      1600
+
+    );
+
+}
+
+
+
+/* ===================================================
+   START EXAM
+=================================================== */
+
+$("startBtn").onclick =
+
+async ()=>{
+
+
+  $("startError").textContent = "";
+
+
+  if(
+
+    !readyConfig()
+
+  ){
+
+
+    $("startError").textContent =
+
+      "Konfigurasi ujian belum tersedia.";
+
+
+    return;
+
+
+  }
+
+
+
+  studentName =
+
+    $("name")
+      .value
+      .trim();
+
+
+
+  studentNpm =
+
+    $("npm")
+      .value
+      .trim();
+
+
+
+  $("startBtn").disabled =
+
+    true;
+
+
+  $("startBtn").textContent =
+
+    "Menyiapkan soal…";
+
+
+  $("start")
+    .classList
+    .add(
+      "loading"
+    );
+
+
+
+  try{
+
+
+    const data =
+
+      await rpc(
+
+        "start_rpl_exam",
+
+        {
+
+
+          p_name:
+            studentName,
+
+
+          p_npm:
+            studentNpm
+
+
+        }
+
+      );
+
+
+
+    attemptId =
+
+      data.attempt_id;
+
+
+
+    const mcqs =
+
+      (
+
+        data.questions
+
+        ||
+
+        []
+
+      )
+
+      .map(
+
+        question =>({
+
+
+          type:"mcq",
+
+
+          id:
+            question.id,
+
+
+          topic:
+            question.topic,
+
+
+          question:
+            question.question,
+
+
+          options:
+
+            seededShuffle(
+
+              question.options
+
+              ||
+
+              [],
+
+              `${attemptId}:${question.id}:options`
+
+            )
+
+
+        })
+
+      )
+
+      .sort(
+
+        (
+
+          a,
+
+          b
+
+        ) =>
+
+          String(a.id)
+            .localeCompare(
+              String(b.id)
+            )
+
+      );
+
+
+
+    const essays =
+
+      (
+
+        data.essays
+
+        ||
+
+        []
+
+      )
+
+      .map(
+
+        essay =>({
+
+
+          type:"essay",
+
+
+          id:
+            essay.id,
+
+
+          topic:
+            essay.topic,
+
+
+          question:
+            essay.question
+
+
+        })
+
+      )
+
+      .sort(
+
+        (
+
+          a,
+
+          b
+
+        ) =>
+
+          String(a.id)
+            .localeCompare(
+              String(b.id)
+            )
+
+      );
+
+
+
+    if(
+
+      mcqs.length !== 16
+
+      ||
+
+      essays.length !== 4
+
+    ){
+
+
+      throw new Error(
+
+        "Jumlah soal dari database tidak sesuai."
+
+      );
+
+
+    }
+
+
+
+    /*
+    ==================================================
+    20 SOAL DIACAK BERDASARKAN ATTEMPT ID.
+
+    NOMOR YANG TERLIHAT MAHASISWA BUKAN KODE SOAL.
+
+    CONTOH:
+    PG06 BISA MUNCUL SEBAGAI NOMOR 1 PADA MAHASISWA A
+    DAN NOMOR 12 PADA MAHASISWA B.
+
+    SUPABASE TETAP MENYIMPAN BERDASARKAN UUID SOAL.
+    ==================================================
+    */
+
+
+    items =
+
+      seededShuffle(
+
+        [
+
+          ...mcqs,
+
+          ...essays
+
+        ],
+
+        `${attemptId}:display-order`
+
+      );
+
+
+
+    idx = 0;
+
+
+    pgAnswers = {};
+
+
+    essayAnswers = {};
+
+
+    violations = 0;
+
+
+    secondsLeft =
+
+      CFG.minutes * 60;
+
+
+    started = true;
+
+
+    submitted = false;
+
+
+    pendingWarning = false;
+
+
+
+    document
+      .body
+      .classList
+      .add(
+        "exam"
+      );
+
+
+
+    $("start")
+      .classList
+      .remove(
+        "loading"
+      );
+
+
+
+    $("start")
+      .classList
+      .add(
+        "hidden"
+      );
+
+
+
+    $("exam")
+      .classList
+      .remove(
+        "hidden"
+      );
+
+
+
+    $("student").textContent =
+
+      studentName
+
+      +
+
+      " • "
+
+      +
+
+      studentNpm;
+
+
+
+    $("viol").textContent =
+
+      violations;
+
+
+
+    buildWatermark();
+
+
+    renderQuestion();
+
+
+    updateClock();
+
+
+
+    timerInterval =
+
+      setInterval(
+
+        ()=>{
+
+
+          secondsLeft--;
+
+
+          updateClock();
+
+
+
+          if(
+
+            secondsLeft <= 0
+
+          ){
+
+
+            finishExam(
+
+              "Waktu habis — submit otomatis"
+
+            );
+
+
+          }
+
+
+        },
+
+        1000
+
+      );
+
+
+
+    try{
+
+
+      await document
+        .documentElement
+        .requestFullscreen?.();
+
+
+    }
+
+
+    catch(error){}
+
+
+  }
+
+
+  catch(error){
+
+
+    $("start")
+      .classList
+      .remove(
+        "loading"
+      );
+
+
+    $("startError").textContent =
+
+      "Gagal memulai ujian: "
+
+      +
+
+      error.message;
+
+
+
+    $("startBtn").disabled =
+
+      false;
+
+
+
+    $("startBtn").textContent =
+
+      "Mulai ETS";
+
+
+  }
+
+};
+
+
+
+/* ===================================================
+   TIMER
+=================================================== */
+
+function updateClock(){
+
+
+  const safe =
+
+    Math.max(
+
+      0,
+
+      secondsLeft
+
+    );
+
+
+
+  const minutes =
+
+    Math.floor(
+
+      safe / 60
+
+    );
+
+
+
+  const seconds =
+
+    safe % 60;
+
+
+
+  $("timer").textContent =
+
+
+    String(minutes)
+      .padStart(
+        2,
+        "0"
+      )
+
+    +
+
+    ":"
+
+    +
+
+    String(seconds)
+      .padStart(
+        2,
+        "0"
+      );
+
+
+
+  if(
+
+    secondsLeft <= 300
+
+  ){
+
+
+    $("timer").style.color =
+
+      "var(--bad)";
+
+
+  }
+
+
+
+  updateWatermark();
+
+}
+
+
+
+/* ===================================================
+   ANSWER STATUS
+=================================================== */
+
+function isAnswered(item){
+
+
+  if(
+
+    item.type ===
+    "mcq"
+
+  ){
+
+
+    return !!pgAnswers[
+      item.id
+    ];
+
+
+  }
+
+
+
+  return !!(
+
+    essayAnswers[
+      item.id
+    ]
+
+    &&
+
+    essayAnswers[
+      item.id
+    ]
+      .trim()
+
+  );
+
+}
+
+
+
+function answeredCount(){
+
+
+  return items
+    .filter(
+
+      item =>
+
+        isAnswered(item)
+
+    )
+    .length;
+
+}
+
+
+
+/* ===================================================
+   SAVE ACTIVE ANSWER
+=================================================== */
+
+function saveCurrentAnswer(){
+
+
+  const item =
+
+    items[idx];
+
+
+
+  if(
+
+    !item
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+
+  if(
+
+    item.type ===
+    "essay"
+
+  ){
+
+
+    essayAnswers[
+      item.id
+    ] =
+
+      $("essayInput")
+        .value;
+
+
+  }
+
+}
+
+
+
+/* ===================================================
+   NAVIGATOR
+=================================================== */
+
+function renderNavigator(){
+
+
+  $("questionNav").innerHTML = "";
+
+
+  items
+    .forEach(
+
+      (
+
+        item,
+
+        index
+
+      )=>{
+
+
+        const button =
+
+          document
+            .createElement(
+              "button"
+            );
+
+
+        button.type =
+
+          "button";
+
+
+        button.className =
+
+          "qnav";
+
+
+        button.textContent =
+
+          index + 1;
+
+
+
+        if(
+
+          isAnswered(item)
+
+        ){
+
+
+          button
+            .classList
+            .add(
+              "answered"
+            );
+
+
+        }
+
+
+
+        if(
+
+          index === idx
+
+        ){
+
+
+          button
+            .classList
+            .remove(
+              "answered"
+            );
+
+
+          button
+            .classList
+            .add(
+              "current"
+            );
+
+
+        }
+
+
+
+        button.onclick =
+
+        ()=>{
+
+
+          saveCurrentAnswer();
+
+
+          idx =
+
+            index;
+
+
+          renderQuestion();
+
+
+        };
+
+
+
+        $("questionNav")
+          .appendChild(
+            button
+          );
+
+
+      }
+
+    );
+
+
+
+  $("answerStatus").textContent =
+
+    `Terjawab ${answeredCount()} dari ${items.length}`;
+
+}
+
+
+
+/* ===================================================
+   RENDER QUESTION
+=================================================== */
+
+function renderQuestion(){
+
+
+  $("examError").textContent = "";
+
+
+  const item =
+
+    items[idx];
+
+
+
+  if(
+
+    !item
+
+  ){
+
+
+    $("examError").textContent =
+
+      "Soal tidak ditemukan.";
+
+
+    return;
+
+
+  }
+
+
+
+  /*
+  KODE PG01/U01 TIDAK DITAMPILKAN.
+  */
+
+
+  $("qmeta").textContent =
+
+    `Soal ${idx + 1} dari ${items.length} • ${item.topic}`;
+
+
+
+  $("qtext").textContent =
+
+    item.question;
+
+
+
+  $("bar").style.width =
+
+    (
+
+      answeredCount()
+
+      /
+
+      items.length
+
+      *
+
+      100
+
+    )
+
+    +
+
+    "%";
+
+
+
+  if(
+
+    item.type ===
+    "mcq"
+
+  ){
+
+
+    $("mcqArea")
+      .classList
+      .remove(
+        "hidden"
+      );
+
+
+    $("essayArea")
+      .classList
+      .add(
+        "hidden"
+      );
+
+
+    $("opts").innerHTML = "";
+
+
+
+    item.options
+      .forEach(
+
+        (
+
+          option,
+
+          optionIndex
+
+        )=>{
+
+
+          const button =
+
+            document
+              .createElement(
+                "button"
+              );
+
+
+          button.className =
+
+            "opt";
+
+
+          button.type =
+
+            "button";
+
+
+
+          if(
+
+            pgAnswers[
+              item.id
+            ]
+
+            ===
+
+            option
+
+          ){
+
+
+            button
+              .classList
+              .add(
+                "sel"
+              );
+
+
+          }
+
+
+
+          const letter =
+
+            document
+              .createElement(
+                "span"
+              );
+
+
+          letter.className =
+
+            "letter";
+
+
+          letter.textContent =
+
+            String
+              .fromCharCode(
+
+                65
+
+                +
+
+                optionIndex
+
+              )
+
+            +
+
+            ".";
+
+
+
+          const text =
+
+            document
+              .createElement(
+                "span"
+              );
+
+
+          text.textContent =
+
+            option;
+
+
+
+          button
+            .appendChild(
+              letter
+            );
+
+
+          button
+            .appendChild(
+              text
+            );
+
+
+
+          button.onclick =
+
+          ()=>{
+
+
+            pgAnswers[
+              item.id
+            ] =
+
+              option;
+
+
+
+            [
+
+              ...$("opts").children
+
+            ]
+
+            .forEach(
+
+              element =>{
+
+
+                element
+                  .classList
+                  .remove(
+                    "sel"
+                  );
+
+
+              }
+
+            );
+
+
+
+            button
+              .classList
+              .add(
+                "sel"
+              );
+
+
+
+            renderNavigator();
+
+
+
+            $("bar").style.width =
+
+              (
+
+                answeredCount()
+
+                /
+
+                items.length
+
+                *
+
+                100
+
+              )
+
+              +
+
+              "%";
+
+
+          };
+
+
+
+          $("opts")
+            .appendChild(
+              button
+            );
+
+
+        }
+
+      );
+
+
+  }
+
+
+  else{
+
+
+    $("mcqArea")
+      .classList
+      .add(
+        "hidden"
+      );
+
+
+    $("essayArea")
+      .classList
+      .remove(
+        "hidden"
+      );
+
+
+
+    $("essayInput").value =
+
+      essayAnswers[
+        item.id
+      ]
+
+      ||
+
+      "";
+
+
+
+    updateWordCount();
+
+
+  }
+
+
+
+  $("prevBtn").disabled =
+
+    idx === 0;
+
+
+
+  $("nextBtn").disabled =
+
+    idx ===
+    items.length - 1;
+
+
+
+  renderNavigator();
+
+}
+
+
+
+/* ===================================================
+   WORD COUNT
+=================================================== */
+
+function updateWordCount(){
+
+
+  const text =
+
+    $("essayInput")
+      .value
+      .trim();
+
+
+
+  const count =
+
+
+    text
+
+    ?
+
+    text
+      .split(
+        /\s+/
+      )
+      .length
+
+    :
+
+    0;
+
+
+
+  $("wordCount").textContent =
+
+    count;
+
+}
+
+
+
+$("essayInput")
+  .addEventListener(
+
+    "input",
+
+    ()=>{
+
+
+      const item =
+
+        items[idx];
+
+
+
+      if(
+
+        item?.type !==
+        "essay"
+
+      ){
+
+
+        return;
+
+
+      }
+
+
+
+      essayAnswers[
+        item.id
+      ] =
+
+        $("essayInput")
+          .value;
+
+
+
+      updateWordCount();
+
+
+
+      renderNavigator();
+
+
+
+      $("bar").style.width =
+
+        (
+
+          answeredCount()
+
+          /
+
+          items.length
+
+          *
+
+          100
+
+        )
+
+        +
+
+        "%";
+
+
+    }
+
+  );
+
+
+
+/* ===================================================
+   PREVIOUS
+=================================================== */
+
+$("prevBtn").onclick =
+
+()=>{
+
+
+  saveCurrentAnswer();
+
+
+
+  if(
+
+    idx > 0
+
+  ){
+
+
+    idx--;
+
+
+    renderQuestion();
+
+
+  }
+
+};
+
+
+
+/* ===================================================
+   NEXT
+=================================================== */
+
+$("nextBtn").onclick =
+
+()=>{
+
+
+  saveCurrentAnswer();
+
+
+
+  if(
+
+    idx <
+    items.length - 1
+
+  ){
+
+
+    idx++;
+
+
+    renderQuestion();
+
+
+  }
+
+};
+
+
+
+/* ===================================================
+   MANUAL SUBMIT
+=================================================== */
+
+$("submitBtn").onclick =
+
+async ()=>{
+
+
+  saveCurrentAnswer();
+
+
+
+  const unanswered =
+
+    items.length
+
+    -
+
+    answeredCount();
+
+
+
+  let message =
+
+    "Apakah Anda yakin ingin mengirim seluruh jawaban?";
+
+
+
+  if(
+
+    unanswered > 0
+
+  ){
+
+
+    message =
+
+      `Masih ada ${unanswered} soal yang belum dijawab.\n\nTetap submit ujian?`;
+
+
+  }
+
+
+
+  const confirmSubmit =
+
+    window.confirm(
+      message
+    );
+
+
+
+  if(
+
+    !confirmSubmit
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+
+  await finishExam(
+
+    "Disubmit oleh mahasiswa"
+
+  );
+
+};
+
+
+
+/* ===================================================
+   FINISH EXAM
+=================================================== */
+
+async function finishExam(
+
+  reason
+
+){
+
+
+  if(
+
+    submitted
+
+  ){
+
+
+    return;
+
+
+  }
+
+
+
+  saveCurrentAnswer();
+
+
+
+  submitted = true;
+
+
+  started = false;
+
+
+
+  clearInterval(
+
+    timerInterval
+
+  );
+
+
+
+  const pgPayload =
+
+    Object
+      .entries(
+        pgAnswers
+      )
+
+      .map(
+
+        (
+
+          [
+
+            questionId,
+
+            answer
+
+          ]
+
+        ) =>({
+
+
+          question_id:
+            questionId,
+
+
+          answer:
+            answer
+
+
+        })
+
+      );
+
+
+
+  const essayPayload =
+
+    Object
+      .entries(
+        essayAnswers
+      )
+
+      .filter(
+
+        (
+
+          [
+
+            essayId,
+
+            answerText
+
+          ]
+
+        ) =>
+
+
+          answerText
+
+          &&
+
+          answerText.trim()
+
+
+      )
+
+      .map(
+
+        (
+
+          [
+
+            essayId,
+
+            answerText
+
+          ]
+
+        ) =>({
+
+
+          essay_id:
+            essayId,
+
+
+          answer_text:
+            answerText.trim()
+
+
+        })
+
+      );
+
+
+
+  $("submitBtn").disabled =
+
+    true;
+
+
+
+  $("submitBtn").textContent =
+
+    "Mengirim…";
+
+
+
+  $("examError").textContent =
+
+    "";
+
+
+
+  try{
+
+
+    const data =
+
+      await rpc(
+
+        "submit_rpl_exam",
+
+        {
+
+
+          p_attempt_id:
+            attemptId,
+
+
+          p_answers:
+            pgPayload,
+
+
+          p_essay_answers:
+            essayPayload,
+
+
+          p_tab_violations:
+            violations,
+
+
+          p_submit_reason:
+            reason
+
+
+        }
+
+      );
+
+
+
+    document
+      .body
+      .classList
+      .remove(
+        "exam"
+      );
+
+
+
+    hidePrivacyShield();
+
+
+    hideWatermark();
+
+
+
+    $("overlay")
+      .classList
+      .add(
+        "hidden"
+      );
+
+
+
+    $("exam")
+      .classList
+      .add(
+        "hidden"
+      );
+
+
+
+    $("result")
+      .classList
+      .remove(
+        "hidden"
+      );
+
+
+
+    $("submissionId").textContent =
+
+      "Submission ID: "
+
+      +
+
+      data.attempt_id;
+
+
+
+    try{
+
+
+      if(
+
+        document.fullscreenElement
+
+      ){
+
+
+        await document
+          .exitFullscreen();
+
+
+      }
+
+
+    }
+
+
+    catch(error){}
+
+
+  }
+
+
+  catch(error){
+
+
+    submitted = false;
+
+
+    started = true;
+
+
+
+    $("examError").textContent =
+
+      "Submit gagal: "
+
+      +
+
+      error.message
+
+      +
+
+      ". Jangan tutup halaman. Silakan submit kembali.";
+
+
+
+    $("submitBtn").disabled =
+
+      false;
+
+
+
+    $("submitBtn").textContent =
+
+      "Submit Ujian";
+
+
+
+    buildWatermark();
+
+
+  }
+
+}
+
+
+
+/* ===================================================
+   TAB SWITCH
+=================================================== */
+
+document
+  .addEventListener(
+
+    "visibilitychange",
+
+    ()=>{
+
+
+      if(
+
+        !started
+
+        ||
+
+        submitted
+
+      ){
+
+
+        return;
+
+
+      }
+
+
+
+      if(
+
+        document.hidden
+
+      ){
+
+
+        saveCurrentAnswer();
+
+
+
+        showPrivacyShield();
+
+
+
+        violations++;
+
+
+
+        $("viol").textContent =
+
+          violations;
+
+
+
+        if(
+
+          violations >=
+          CFG.maxViol
+
+        ){
+
+
+          finishExam(
+
+            "Batas perpindahan tab tercapai — submit otomatis"
+
+          );
+
+
+        }
+
+
+        else{
+
+
+          pendingWarning =
+
+            true;
+
+
+        }
+
+
+      }
+
+
+      else if(
+
+        pendingWarning
+
+        &&
+
+        !submitted
+
+      ){
+
+
+        pendingWarning =
+
+          false;
+
+
+
+        hidePrivacyShield();
+
+
+
+        $("warnText").textContent =
+
+          `Perpindahan tab ke-${violations} tercatat. Pada perpindahan ke-${CFG.maxViol}, ujian akan disubmit otomatis.`;
+
+
+
+        $("overlay")
+          .classList
+          .remove(
+            "hidden"
+          );
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+/* ===================================================
+   WINDOW BLUR
+=================================================== */
+
+window
+  .addEventListener(
+
+    "blur",
+
+    ()=>{
+
+
+      if(
+
+        started
+
+        &&
+
+        !submitted
+
+      ){
+
+
+        showPrivacyShield();
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+window
+  .addEventListener(
+
+    "focus",
+
+    ()=>{
+
+
+      if(
+
+        started
+
+        &&
+
+        !submitted
+
+        &&
+
+        document.visibilityState ===
+        "visible"
+
+        &&
+
+        $("overlay")
+          .classList
+          .contains(
+            "hidden"
+          )
+
+      ){
+
+
+        setTimeout(
+
+          ()=>{
+
+
+            if(
+
+              document.hasFocus()
+
+            ){
+
+
+              hidePrivacyShield();
+
+
+            }
+
+
+          },
+
+          180
+
+        );
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+/* ===================================================
+   BACK BUTTON
+=================================================== */
+
+$("backBtn").onclick =
+
+()=>{
+
+
+  $("overlay")
+    .classList
+    .add(
+      "hidden"
+    );
+
+
+
+  hidePrivacyShield();
+
+
+
+  try{
+
+
+    document
+      .documentElement
+      .requestFullscreen?.();
+
+
+  }
+
+
+  catch(error){}
+
+
+};
+
+
+
+/* ===================================================
+   BASIC ANTI COPY
+=================================================== */
+
+[
+
+  "contextmenu",
+
+  "copy",
+
+  "cut",
+
+  "paste",
+
+  "dragstart"
+
+]
+
+.forEach(
+
+  eventName =>{
+
+
+    document
+      .addEventListener(
+
+        eventName,
+
+        event =>{
+
+
+          if(
+
+            started
+
+            &&
+
+            !submitted
+
+          ){
+
+
+            event.preventDefault();
+
+
+          }
+
+
+        }
+
+      );
+
+
+  }
+
+);
+
+
+
+/* ===================================================
+   SCREENSHOT SHORTCUT DETERRENCE
+=================================================== */
+
+function isScreenshotShortcut(
+
+  event
+
+){
+
+
+  const key =
+
+    String(
+
+      event.key
+
+      ||
+
+      ""
+
+    )
+
+    .toLowerCase();
+
+
+
+  if(
+
+    event.key ===
+    "PrintScreen"
+
+  ){
+
+
+    return true;
+
+
+  }
+
+
+
+  /*
+  macOS
+  Command + Shift + 3 / 4 / 5
+  */
+
+
+  if(
+
+    event.metaKey
+
+    &&
+
+    event.shiftKey
+
+    &&
+
+    [
+
+      "3",
+
+      "4",
+
+      "5"
+
+    ]
+
+    .includes(
+      key
+    )
+
+  ){
+
+
+    return true;
+
+
+  }
+
+
+
+  /*
+  Windows Win + Shift + S
+  jika event diteruskan browser.
+  */
+
+
+  if(
+
+    event.metaKey
+
+    &&
+
+    event.shiftKey
+
+    &&
+
+    key === "s"
+
+  ){
+
+
+    return true;
+
+
+  }
+
+
+
+  return false;
+
+}
+
+
+
+/* ===================================================
+   KEYBOARD BLOCK
+=================================================== */
+
+document
+  .addEventListener(
+
+    "keydown",
+
+    event =>{
+
+
+      if(
+
+        !started
+
+        ||
+
+        submitted
+
+      ){
+
+
+        return;
+
+
+      }
+
+
+
+      const key =
+
+        String(
+
+          event.key
+
+          ||
+
+          ""
+
+        )
+
+        .toLowerCase();
+
+
+
+      if(
+
+        isScreenshotShortcut(
+          event
+        )
+
+      ){
+
+
+        event.preventDefault();
+
+
+        temporaryScreenshotShield();
+
+
+        return;
+
+
+      }
+
+
+
+      if(
+
+
+        event.key ===
+        "F12"
+
+
+        ||
+
+
+        (
+
+          event.ctrlKey
+
+          &&
+
+          [
+
+            "c",
+
+            "u",
+
+            "s",
+
+            "p"
+
+          ]
+
+          .includes(
+            key
+          )
+
+        )
+
+
+        ||
+
+
+        (
+
+          event.ctrlKey
+
+          &&
+
+          event.shiftKey
+
+          &&
+
+          [
+
+            "i",
+
+            "j",
+
+            "c"
+
+          ]
+
+          .includes(
+            key
+          )
+
+        )
+
+
+      ){
+
+
+        event.preventDefault();
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+document
+  .addEventListener(
+
+    "keyup",
+
+    event =>{
+
+
+      if(
+
+        started
+
+        &&
+
+        !submitted
+
+        &&
+
+        event.key ===
+        "PrintScreen"
+
+      ){
+
+
+        temporaryScreenshotShield();
+
+
+      }
+
+
+    }
+
+  );
+
+
+
+/* ===================================================
+   CLOSE / RELOAD WARNING
+=================================================== */
+
+window
+  .addEventListener(
+
+    "beforeunload",
+
+    event =>{
+
+
+      if(
+
+        started
+
+        &&
+
+        !submitted
+
+      ){
+
+
+        event.preventDefault();
+
+
+        event.returnValue = "";
+
+
+      }
+
+
+    }
+
+  );
+
+
+</script>
+
+
+</body>
+
+</html>
